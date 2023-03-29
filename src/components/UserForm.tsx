@@ -1,8 +1,14 @@
+/*
+이 컴포넌트에서 테스트할 것
+1. 2개의 input과 1개의 button 렌더링
+2. name, email 입력하고 form을 submit하면 addUsers(setUsers) 함수가 동작하는지
+
+ */
 import React, { ChangeEvent, FormEvent } from "react";
 import { UserType } from "../interfaces";
 import { useState } from "react";
 
-interface PropType {
+export interface PropType {
   addUsers: React.Dispatch<React.SetStateAction<UserType[]>>;
 }
 const UserForm = ({ addUsers }: PropType) => {

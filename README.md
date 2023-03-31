@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# CRA 환경에서 rtl과 jest로 테스트하기!
+> TDD 도전!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<details>
+    <summary>0. CRA 환경의 test 알아보기</summary>
 
-## Available Scripts
+## test 실행
+- react scripts 덕분에 npm run test 실행시 watch 모드가 적용됨
 
-In the project directory, you can run:
+</details>
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<details>
+    <summary>1. 테스트 작성 프로세스</summary>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 테스트 작성 프로세스
+### 1. 테스트할 컴포넌트 고르기
+### 2. 테스트 파일 생성
+- src/__tests__ 폴더 내에 작성
+- 컴포넌트명.test.jsx(tsx) 형태로
+### 3. 테스트할 기능 정하기
+- ex) input의 존재 등
+### 4. 각 기능이 예상대로 작성하는지 테스트 코드 작성
+### 5. CLI에서 test 실행
 
-### `npm test`
+</details>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<details>
+    <summary>2. Query</summary>
 
-### `npm run build`
+## Query 란?
+> rtl 에서 제공하는 element를 찾기 위한 함수
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- screen.getByRole()
+  - textbox 탐색할 때 2번째 인수로 { name: /레이블명/i } 이렇게 하여 레이블 탐색 가능
+- screen.findAllByDisplayValue()
+- 등등
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+</details>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<details>
+    <summary>3. Matcher</summary>
 
-### `npm run eject`
+## Matcher 란?
+> 무엇을 테스트(비교)할지 정해주는 함수
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### jest 의 matcher : 값을 테스트
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### rtl 의 matcher : 렌더링 등을 테스트
+- expect(element).toBeInTheDocument()
+- expect(element).toHaveClass()
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+</details>
 
-## Learn More
+<details>
+    <summary>4. 유저의 인터랙션 시뮬레이션하기</summary>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## @testing-library/user-event
+> user 로 import 하며 클릭, 키보드 등 입력을 시뮬레이션
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 예시
+- user.click()
+- user.keyboard
 
-### Code Splitting
+등이 있다
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### user 관련 함수는 async/await 함수로 사용해야 한다!!
+- test 함수 내의 콜백 앞에 async 를 붙여주고
+- user 함수 앞에는 await 을 붙여준다!
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+</details>

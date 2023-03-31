@@ -11,7 +11,6 @@ const UserForm = ({ addUsers }) => {
       ...form,
       [e.target.name]: e.target.value,
     });
-    console.log(form);
   };
 
   const handleSubmit = (e) => {
@@ -28,28 +27,26 @@ const UserForm = ({ addUsers }) => {
       <h2>유저 생성</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="">
-            이름
-            <input
-              name="name"
-              value={form.name}
-              onChange={handleChangeForm}
-              type="text"
-              required
-            />
-          </label>
+          <label htmlFor="name">이름</label>
+          <input
+            name="name"
+            id="name"
+            value={form.name}
+            onChange={handleChangeForm}
+            type="text"
+            required
+          />
         </div>
         <div>
-          <label htmlFor="">
-            이메일
-            <input
-              name="email"
-              value={form.email}
-              onChange={handleChangeForm}
-              type="email"
-              required
-            />
-          </label>
+          <label htmlFor="email">이메일</label>
+          <input
+            name="email"
+            id="email"
+            value={form.email}
+            onChange={handleChangeForm}
+            type="email"
+            required
+          />
         </div>
         <button type="submit">등록</button>
       </form>

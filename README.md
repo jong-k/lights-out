@@ -71,3 +71,64 @@
 
 
 </details>
+
+<details>
+    <summary>testing-playground 사용하기</summary>
+
+## screen.logTestingPlaygroundURL()
+> jest 실행중인 터미널에서 testing-playground 외부 링크 제공
+
+외부링크에서 테스트의 마크업을 확인할 수 있어서 매우 편리
+- 엘리먼트 클릭하면 쿼리 제공해줌
+- 마크업 수정해보는 것도 가능
+</details>
+
+<details>
+    <summary>table의 row 모두 찾기</summary>
+
+## table의 row 모두 찾기가 어려울 때
+### table aria role
+
+<table>
+  <thead>
+    <tr>
+      <th>element</th>
+      <th>aria role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>thead</td>
+      <td>rowgroup</td>
+    </tr>
+    <tr>
+      <td>tbody</td>
+      <td>rowgroup</td>
+    </tr>
+    <tr>
+      <td>tr</td>
+      <td>row</td>
+    </tr>
+    <tr>
+      <td>th</td>
+      <td>columnheader</td>
+    </tr>
+    <tr>
+      <td>td</td>
+      <td>cell</td>
+    </tr>
+  </tbody>
+</table>
+
+### 다른 2가지 방법 사용하여 회피
+> 쿼리 오랫동안 찾는거 시간낭비...
+
+`data-testid` 또는 `container.querySelector()` 를 이용!
+
+## data-testid
+> 엘리먼트에 어트리뷰트로 부여
+
+data-testid="users" 이렇게!
+
+그런데 좋은 방법은 아님, 왜냐면 코드베이스에 직접 추가해야하기 때문
+</details>

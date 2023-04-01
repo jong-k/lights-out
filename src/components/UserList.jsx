@@ -9,7 +9,7 @@ const UserList = ({ users }) => {
             <th>이메일</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody data-testid="users">
           {users &&
             users.map((user, idx) => (
               <tr key={idx}>

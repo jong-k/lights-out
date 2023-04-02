@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import UserForm from "../components/UserForm";
 
-// jest의 test
+// test : jest-dom의 전역 변수처럼 활용 가능
 test("2개의 인풋, 1개의 버튼!", () => {
   // 컴포넌트 렌더링
   render(<UserForm />);
@@ -45,4 +45,23 @@ test("form이 제출될 때 handleSubmit 함수가 잘 실행되는지?", async 
 
   // 평가
   expect(mock).toHaveBeenCalled();
+  // expect(mock).toHaveBeenCalledWith({ name: "손흥민", email: "son@korea.com" });
+});
+
+test("form이 제출됐을 때 form 비우기", () => {
+  render(<UserForm addUsers={() => {}} />);
+
+  const nameInput = screen.getByRole("textbox", { name: /이름/ });
+  const emailInput = screen.getByRole("textbox", { name: /이메일/ });
+  const button = screen.getByRole("button");
+
+  user.click(nameInput);
+  user.keyboard("lee");
+  user.click(emailInput);
+  user.keyboard("lee@korea.com");
+
+  user.click(button);
+
+  expect(nameInput).toHaveValue("");
+  expect(emailInput).toHaveValue("");
 });

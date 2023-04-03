@@ -58,6 +58,35 @@
 - (기본값 1000ms) 이후에도 없으면 reject 되는 promise를 반환
 - 따라서 프로미스를 받기 위해 test 콜백함수에 async/await를 써준다
 
+## query criteria
+> ByRole, ByText ... 어떤 기준에 따라 찾을 것인지
+
+- 매개변수로 `문자열` 또는 `정규식`을 받는다
+
+### ByRole
+- aria-role 을 기반으로 찾음
+
+### ByLabelText
+- label text를 기반으로 찾음
+
+### ByPlaceholderText
+- placeholder text를 기반으로 찾음
+
+### ByText
+- element가 보유한 텍스트로 찾음
+
+### ByDisplayValue
+- element의 현재값으로 찾음
+
+### ByAltText
+- alt 어트리뷰트로 찾음
+
+### ByTitle
+- title 어트리뷰트로 찾음
+
+### ByTestId
+- data-testid 어트리뷰트로 찾음
+
 </details>
 
 <details>

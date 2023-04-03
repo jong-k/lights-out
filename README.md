@@ -36,7 +36,7 @@
 <details>
     <summary>2. Query</summary>
 
-### Query 란?
+## Query 란?
 > element를 찾기 위한 함수 (rtl 에서 제공)
 
 - screen.getByRole()
@@ -44,6 +44,19 @@
   - id 또는 name 어트리뷰트로 찾는 것이 아님!
 - screen.findAllByDisplayValue()
 - 등등
+
+## query type
+> 1가지 이상의 결과를 받을 때는 All 키워드를 사용해야 한다 (아니면 에러 발생)
+### getBy...
+- query와 매칭되는 DOM node를 반환
+- 결과가 없거나 1가지 이상의 결과가 있다면 에러를 반환
+  - 여러개의 결과를 받으려면 getAllBy... 를 사용
+### queryBy...
+- getBy와 똑같은데 query 결과가 없으면 null 반환
+### findBy...
+- 매칭 결과가 있으면 resolve
+- (기본값 1000ms) 이후에도 없으면 reject 되는 promise를 반환
+- 따라서 프로미스를 받기 위해 test 콜백함수에 async/await를 써준다
 
 </details>
 

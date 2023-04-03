@@ -92,16 +92,25 @@
 <details>
     <summary>3. Matcher</summary>
 
-### Matcher 란?
+## Matcher 란?
 > 무엇을 테스트(비교)할지 정해주는 함수
 
-- React에서는 컴포넌트의 값 (텍스트 콘텐츠) 등을 검사
-### jest-dom 의 matcher : 값을 테스트
-- expect(element).toHaveValue(값) : element가 특정 값을 갖고 있는지
-
-### rtl 의 matcher : 렌더링 등을 테스트
-- expect(element).toBeInTheDocument() : 화면에 존재하는지
+### jest-dom 의 matcher : DOM Element 및 화면을 검사
+- expect(element).toBeInTheDocument() : 화면에 element가 있는지
 - expect(element).toHaveClass() : className 을 갖고 있는지
+
+### Jest 의 matcher : 값을 검사
+- expect(value).toHaveLength(숫자) : 배열이 특정 길이인지
+- expect(value).toEqual(value) : 특정 값인지
+
+## custom matcher 만들기
+- matcher는 expect(x) 다음의 matcher(y, z, ...) 이런 형태로 호출된다
+  - x (received) : matching 여부를 탐색할 element or value
+  - y, z (expected) : 검사할 때 활용할 매개변수
+- 최종 반환값은 { pass: Boolean, message: () => String } 객체이다
+  - pass 가 true이면 매칭이 잘 됐음을 의미한다
+  - message 에는 메세지를 리턴하는 콜백 함수를 할당한다
+- custom matcher를 만들고 사용하기 전에 expect().extends({ 커스텀매쳐 }) 이렇게 추가해주면 된다
 
 </details>
 
